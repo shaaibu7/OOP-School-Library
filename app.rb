@@ -117,7 +117,7 @@ class App
       puts "ID: #{person.id}, Name: #{person.name.upcase} and Age #{person.age}"
     end
 
-    if @people.empty?
+    if @person.empty?
       puts 'No rental record in the library, you can create one.'
       return
 
