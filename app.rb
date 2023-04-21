@@ -81,7 +81,7 @@ class App
     new_book = Book.new(title, author)
     @books.push(new_book)
 
-    puts "created book successfully with title of #{new_book.title} authored by #{new_book.author.upcase()}"
+    puts "created book successfully with title of #{new_book.title} authored by #{new_book.author.upcase}"
   end
 
   def create_rental
@@ -98,7 +98,7 @@ class App
     choice_book = @books[choice_book.to_i]
     puts 'Select a person to rent the book by id'
     @people.each_with_index do |person, index|
-      puts "#{index} #{person.name.upcase()} with id #{person.id} and #{person.age} years old"
+      puts "#{index} #{person.name.upcase} with id #{person.id} and #{person.age} years old"
     end
 
     choice_person = gets.chomp
@@ -109,12 +109,12 @@ class App
     date = gets.chomp
     rental = Rental.new(date, choice_book, choice_person)
 
-    puts "record for rented book saved successfully"
+    puts "#{rental} record for rented book saved successfully"
   end
 
   def list_all_rentals_by_id
     @people.each do |person|
-      puts "ID: #{person.id}, Name: #{person.name.upcase()} and Age #{person.age}"
+      puts "ID: #{person.id}, Name: #{person.name.upcase} and Age #{person.age}"
     end
 
     if @people.empty?
@@ -131,7 +131,7 @@ class App
 
     if person and person.rentals.length.positive?
       person.rentals.each do |item|
-        puts "Name: #{person.name.upcase()} Book: #{item.book.title} authored by #{item.book.author} on the date #{item.date}"
+        puts "Name: #{person.name.upcase} Book: #{item.book.title} authored by #{item.book.author} on the date #{item.date}"
       end
     else
       puts 'No rentals available at the moment'
