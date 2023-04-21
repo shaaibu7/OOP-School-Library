@@ -1,39 +1,40 @@
-require_relative 'person'
-require_relative 'capitalize_decorator'
-require_relative 'trimmer_decorator'
-require_relative 'book'
-require_relative 'rental'
-require_relative 'teacher'
-require_relative 'student'
-require_relative 'classroom'
+require_relative 'app'
 
-# create a classsroom
-department = Classroom.new('Computer Science')
-department1 = Classroom.new('Statistics')
+def main
+  puts 'Welcome to the school library store'
+  puts '==================================='
 
-#  create a student one
-student_one = Student.new(department, 21, 'Suleiman', parent_permission: true)
-# create a student two
-student_two = Student.new(department, 22, 'Rashik', parent_permission: true)
-# create a teacher
-teacher_one = Teacher.new(department1, 50, 'Singh', parent_permission: true)
+  app = App.new
 
-# create a book
-book_one = Book.new('Forty days in sahara', 'Martin Caplo')
-# create a book
-book_two = Book.new('The journey of a thousand miles', 'Houston Garry')
-# create a book
-book_three = Book.new('The Dark', 'Jack Karly')
+  loop do
+    puts 'Please choose any number by entering a number:'
+    puts '1 - list all books'
+    puts '2 - list all people'
+    puts '3 - Create a person'
+    puts '4 - Create a book'
+    puts '5 - Create a rental'
+    puts '6 - List all rentals for a given person ID'
+    puts '7 - Exit'
 
-# create a rental
-rental_one = Rental.new('4-12-2023', book_one, student_one)
-# create a rental
-rental_two = Rental.new('4-11-2023', book_two, student_two)
-# create a rental
-rental_three = Rental.new('4-11-2023', book_three, teacher_one)
+    option = gets.chomp
+    case option
+    when '1'
+      app.list_all_books
+    when '2'
+      app.list_all_people
+    when '3'
+      app.create_a_person
+    when '4'
+      app.create_a_book
+    when '5'
+      app.create_rental
+    when '6'
+      app.list_all_rentals_by_id
+    end
 
-puts 'library books rental details are as follows'
-puts '============================================='
-puts "1. #{rental_one.person.name} rented the book #{rental_one.book.title} on #{rental_one.date}"
-puts "1. #{rental_two.person.name} rented the book #{rental_two.book.title} on #{rental_two.date}"
-puts "1. #{rental_three.person.name} rented the book #{rental_three.book.title} on #{rental_three.date}"
+    break if option == '7'
+  end
+  puts 'Thank you for using our application'
+end
+
+main
